@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +17,10 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	@GetMapping("/")
-	void getUsers() {
+	List<User> getUsers() {
+		
 		System.out.println("Called.....");
+		return userService.getUsers();
 	}
 	@GetMapping("/{id}")
 	void getUser(@PathVariable Integer id) {
@@ -26,7 +30,7 @@ public class UserController {
 	String saveUser(@RequestBody User user) {
 		userService.save(user);
 		System.out.println("Post request......");
-		System.out.println("got user" + user.getName()+"aged "+ user.getAge());
+		System.out.println("got user" + user.getName()+" aged "+ user.getAge());
 		return "Post called";
 	}
 	@PutMapping

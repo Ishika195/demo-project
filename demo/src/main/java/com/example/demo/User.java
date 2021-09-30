@@ -9,7 +9,19 @@ import javax.persistence.Id;
 public class User {
 	
 	String name;
-	int age;
+	private Integer age;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
 	public int getAge() {
 		return age;
 	}
